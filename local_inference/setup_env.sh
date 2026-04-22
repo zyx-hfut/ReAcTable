@@ -9,7 +9,7 @@
 set -e
 
 ENV_NAME="reactable-qwen"
-PYTHON_VERSION="3.9"
+PYTHON_VERSION="3.10"
 VLLM_PORT=8000
 MODEL="Qwen/Qwen2.5-3B-Instruct"
 SERVED_NAME="qwen2.5-3b"

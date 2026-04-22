@@ -7,7 +7,7 @@
 **约束条件**：
 - 所有新代码放在 `local_inference/` 新文件夹下
 - **不修改任何原有文件**
-- 使用 conda 创建 Python 3.9 环境进行所有操作
+- 使用 conda 创建 Python 3.10 环境进行所有操作（vLLM 最新版要求 3.10+）
 - vLLM OpenAI 兼容服务器模式，GPU >= 8GB VRAM，保留 5 个 few-shot 示例
 
 ---
@@ -41,7 +41,7 @@ local_inference/
 ### 第 1 步：创建 conda 环境
 
 ```bash
-conda create -n reactable-qwen python=3.9 -y
+conda create -n reactable-qwen python=3.10 -y
 conda activate reactable-qwen
 cd d:/Code/TableQA/ReAcTable
 pip install -e .

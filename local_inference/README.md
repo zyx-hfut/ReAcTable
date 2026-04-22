@@ -146,8 +146,10 @@ cd ReAcTable
 ### 4.2 创建 Conda 环境
 
 ```bash
-# 创建 Python 3.9 环境
-conda create -n reactable-qwen python=3.9 -y
+# 创建 Python 3.10 环境
+# 注：原项目推荐 Python 3.9，但 vLLM 最新版要求 Python 3.10+。
+# Python 版本不影响实验结果，详见 4.6 节说明。
+conda create -n reactable-qwen python=3.10 -y
 
 # 激活环境
 conda activate reactable-qwen
@@ -160,7 +162,7 @@ conda activate reactable-qwen
 cd /path/to/ReAcTable
 
 # 安装原项目依赖（以可编辑模式安装 tabqa 包）
-pip install -e .
+pip install -e . --no-build-isolation
 
 # 安装 vLLM
 pip install vllm
@@ -196,6 +198,16 @@ CUDA available: True
 GPU: NVIDIA GeForce RTX 4070
 VRAM: 12.0 GB
 ```
+
+### 4.6 关于 Python 版本的说明
+
+原项目推荐 Python 3.9，但 vLLM 最新版要求 Python 3.10+。本工具包使用 Python 3.10 环境，**不影响实验结果**：
+
+- Python 版本只影响运行时环境和依赖库的加载方式
+- 决定实验结果的要素（模型权重、prompt 模板、few-shot 示例、采样参数）均与 Python 版本无关
+- `tabqa` 包的所有核心逻辑（字符串处理、pandas 操作、SQL 执行）在 Python 3.9 和 3.10 下行为完全一致
+
+如果需要严格保持与原论文一致的 Python 3.9 环境，可以为 vLLM 单独创建一个 Python 3.10 环境运行推理服务器，两者通过 HTTP 通信互不干扰。
 
 ---
 
@@ -759,7 +771,7 @@ for e in errors[:5]:
 
 ```powershell
 # 创建环境
-conda create -n reactable-qwen python=3.9 -y
+conda create -n reactable-qwen python=3.10 -y
 conda activate reactable-qwen
 
 # 安装依赖
