@@ -8,7 +8,7 @@ VLLM_API_KEY = "EMPTY"
 MODEL_NAME = "qwen2.5-3b"
 
 # Generation parameters
-MAX_TOKENS = 128  # original was 128, too small for 3B model SQL generation
+MAX_TOKENS = 128  # keep original value; shorter output forces simpler SQL
 TEMPERATURE = 0.6  # for majority vote diversity
 MAX_RETRY = 3  # API call retry count
 
